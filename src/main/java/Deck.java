@@ -30,7 +30,15 @@ public class Deck {
 	 * @param values is an array containing all of the card point values.
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
-		// YOUR CODE HERE
+        //I'm in class writing this right now and I'm surprised that I wrote the exact same thing as you did
+        //I did not copy from the slide
+        cards = new ArrayList<Card>();
+        for(int i = 0; i < ranks.length; i++) {
+            for(int j = 0; j < suits.length; j++) {
+                cards.add(new Card(ranks[i], suits[j], values[i]));
+            }
+        }
+        this.size = cards.size();
 	}
 
 	/**
@@ -38,8 +46,7 @@ public class Deck {
 	 * @return true if this deck is empty, false otherwise.
 	 */
 	public boolean isEmpty() {
-        // YOUR CODE HERE
-        return false;
+        return (this.size == 0);
 	}
 
 	/**
@@ -47,8 +54,7 @@ public class Deck {
 	 * @return the number of undealt cards in this deck.
 	 */
 	public int getSize() {
-        // YOUR CODE HERE
-        return -1;
+        return this.size;
 	}
 
 	/**
@@ -57,7 +63,10 @@ public class Deck {
 	 *         previously dealt.
 	 */
 	public Card deal() {
-		// YOUR CODE HERE
+        if(this.getSize() > 0) {
+            this.size--;
+            return cards.get(this.getSize());
+        }
         return null;
 	}
 
